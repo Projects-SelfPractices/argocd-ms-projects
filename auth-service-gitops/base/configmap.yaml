@@ -1,0 +1,8 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: auth-config
+  namespace: prod-uk-print
+data:
+  LOG_LEVEL: "INFO"
+  TOKEN_EXPIRY: "3600"

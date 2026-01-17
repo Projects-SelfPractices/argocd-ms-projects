@@ -1,0 +1,37 @@
+apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+metadata:
+  name: uk-print-project
+  namespace: argocd
+spec:
+  description: Project grouping for UK Print microservices
+  sourceRepos:
+  - https://github.com/YOUR_USERNAME/auth-service-gitops
+  destinations:
+  - namespace: prod-uk-print
+    server: https://kubernetes.default.svc
+
+  # Restrict allowed resources
+  clusterResourceWhitelist:
+  - group: apps
+    kind: Deployment
+  - group: ""
+    kind: ConfigMap
+  - group: ""
+    kind: Secret
+  - group: ""
+    kind: PersistentVolume
+  - group: ""
+    kind: PersistentVolumeClaim
+
+  namespaceResourceWhitelist:
+  - group: apps
+    kind: Deployment
+  - group: ""
+    kind: ConfigMap
+  - group: ""
+    kind: Secret
+  - group: ""
+    kind: PersistentVolume
+  - group: ""
+    kind: PersistentVolumeClaim
